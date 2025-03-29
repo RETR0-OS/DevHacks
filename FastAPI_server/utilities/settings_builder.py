@@ -12,14 +12,14 @@ class SettingsBuilder:
         self.lora_alpha = 16
         self.lora_dropout = 0.1
         self.use_4bit = True
-        self.bnb_4bit_compute_dtype = "nf4"
+        self.bnb_4bit_compute_dtype = "float16"
         self.save_steps = 0
         self.logging_steps = 25
         self.max_seq_length = None
 
         # BitsAndBytes Advanced
         self.bnb_4bit_use_quant_type = True
-        self.use_nested_quant = True
+        self.use_nested_quant = False
         self.bnb_4bit_quant_type = "nf4"
 
         # Trainer Advanced
@@ -42,12 +42,33 @@ class SettingsBuilder:
         self.packing = False
         self.device_map = {"": 0}
 
-    def set_settings(self, **kwargs):
-        for key, value in kwargs.items():
-            if hasattr(self, key):
-                setattr(self, key, value)
-            else:
-                continue
+    def set_settings(self, settings_dict):
+        """
+        Update settings from a dictionary
+        """
+        for key, value in settings_dict.items():
+            if key == "dataset":
+                self.dataset = value
+            elif key == "max_seq_length":
+                if value == -1:
+                    self.max_seq_length = None
+                else:
+                    self.max_seq_length = value
+            elif hasattr(self, key):
+                # Convert string representations to appropriate types
+                if isinstance(getattr(self, key), bool) and isinstance(value, str):
+                    setattr(self, key, value.lower() == 'true')
+                elif isinstance(getattr(self, key), (int, float)) and isinstance(value, str):
+                    try:
+                        if isinstance(getattr(self, key), int):
+                            setattr(self, key, int(value))
+                        else:
+                            setattr(self, key, float(value))
+                    except ValueError:
+                        # Keep the original value if conversion fails
+                        pass
+                else:
+                    setattr(self, key, value)
 
     def get_settings(self):
         return {
@@ -80,4 +101,7 @@ class SettingsBuilder:
             "packing": self.packing,
             "device_map": self.device_map,
             "max_seq_length": self.max_seq_length,
+            "dataset": self.dataset,
+
+
         }

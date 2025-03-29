@@ -1,18 +1,22 @@
-from fastapi import FastAPI, Request, HTTPException
+import uvicorn
+import uuid
+from fastapi import FastAPI, Request, HTTPException, BackgroundTasks
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel, field_validator
+
 from utilities.hardware_detector import HardwareDetector
 from utilities.settings_builder import SettingsBuilder
-from fastapi.responses import HTMLResponse, JSONResponse
-from pydantic import BaseModel, field_validator
+from utilities.LLMFinetuner import LLMFinetuner
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
 hardware_detector = HardwareDetector()
 settings_builder = SettingsBuilder(None, None, None)
 settings_cache = {}
+finetuning_status = {"status": "idle", "progress": 0, "message": ""}
 app_name = "ModelForge"
+datasets_dir = "./datasets"
 
 class TaskFormData(BaseModel):
     task: str
@@ -30,41 +34,233 @@ class SelectedModelFormData(BaseModel):
             raise ValueError("Selected model cannot be empty.")
         return selected_model
 
-@app.get("/", response_class=HTMLResponse)
-def home(request: Request):
-    return templates.TemplateResponse(
-        "landing.html",
-        {
-            "request": request,
-            "app_name": app_name,
-            "app_description": "No-code LLM finetuning for CUDA environments",
-            "features": [
-                "Intuitive no-code interface",
-                "PEFT and LoRA-based finetuning",
-                "4-bit/8-bit quantization",
-                "GPU-accelerated performance"
-            ]
-        }
-    )
+class SettingsFormData(BaseModel):
+    task: str
+    model_name: str
+    num_train_epochs: int
+    compute_specs: str
+    lora_r: int
+    lora_alpha: int
+    lora_dropout: int
+    use_4bit: bool
+    bnb_4bit_compute_dtype: str
+    bnb_4bit_use_quant_type: str
+    use_nested_quant: bool
+    bnb_4bit_quant_type: str
+    fp16: bool
+    bf16: bool
+    per_device_train_batch_size: int
+    per_device_train_batch_size: int
+    per_device_eval_batch_size: int
+    gradient_accumulation_steps: int
+    gradient_checkpointing: bool
+    max_grad_norm: float
+    learning_rate: float
+    weight_decay: float
+    optim: str
+    lr_scheduler_type: str
+    max_steps: int
+    warmup_ratio: float
+    group_by_length: bool
+    packing: bool
+    max_seq_length: int
+    dataset: str
 
-@app.get("/finetune/detect", response_class=HTMLResponse)
-def detect_hardware_page(request: Request):
+    @field_validator("dataset")
+    def validate_dataset(cls, dataset):
+        if not dataset:
+            raise ValueError("Dataset cannot be empty.")
+        return dataset
+    @field_validator("task")
+    def validate_task(cls, task):
+        if task not in ["text-generation", "summarization", "question-answering"]:
+            raise ValueError("Invalid task. Must be one of 'text-generation', 'summarization', or 'question-answering'.")
+        return task
+    @field_validator("model_name")
+    def validate_model_name(cls, model_name):
+        if not model_name:
+            raise ValueError("Model name cannot be empty.")
+        return model_name
+    @field_validator("num_train_epochs")
+    def validate_num_train_epochs(cls, num_train_epochs):
+        if num_train_epochs <= 0:
+            raise ValueError("Number of training epochs must be greater than 0.")
+        elif num_train_epochs > 30:
+            raise ValueError("Number of training epochs must be less than 50.")
+        return num_train_epochs
+    @field_validator("compute_specs")
+    def validate_compute_specs(cls, compute_specs):
+        if compute_specs not in ["low_end", "mid_range", "high_end"]:
+            raise ValueError("Invalid compute specs. Must be one of 'low_end', 'mid_range', or 'high_end'.")
+        return compute_specs
+    @field_validator("lora_r")
+    def validate_lora_r(cls, lora_r):
+        if lora_r not in [8, 16, 32, 64]:
+            raise ValueError("LoRA rank must be 8, 16, 32, or 64.")
+        return lora_r
+    @field_validator("lora_alpha")
+    def validate_lora_alpha(cls, lora_alpha):
+        if lora_alpha >= 0.5:
+            raise ValueError("LoRA learning rate is too high. Gradients will explode.")
+        return lora_alpha
+    @field_validator("lora_dropout")
+    def validate_lora_dropout(cls, lora_dropout):
+        if lora_dropout < 0.0 or lora_dropout > 1.0:
+            raise ValueError("LoRA dropout probability must be between 0.0 and 1.0.")
+        return lora_dropout
+    @field_validator("use_4bit")
+    def validate_use_4bit(cls, use_4bit):
+        if not isinstance(use_4bit, bool):
+            raise ValueError("use_4bit must be a boolean value.")
+        return use_4bit
+    @field_validator("bnb_4bit_compute_dtype")
+    def validate_bnb_4bit_compute_dtype(cls, bnb_4bit_compute_dtype):
+        if bnb_4bit_compute_dtype not in ["float16", "bfloat16"]:
+            raise ValueError("Invalid compute dtype. Must be 'float16' or 'bfloat16'.")
+        return bnb_4bit_compute_dtype
+    @field_validator("bnb_4bit_use_quant_type")
+    def validate_bnb_4bit_use_quant_type(cls, bnb_4bit_use_quant_type):
+        if bnb_4bit_use_quant_type not in ["fp4", "int8"]:
+            raise ValueError("Invalid quantization type. Must be 'fp4' or 'int8'.")
+        return bnb_4bit_use_quant_type
+    @field_validator("use_nested_quant")
+    def validate_use_nested_quant(cls, use_nested_quant):
+        if not isinstance(use_nested_quant, bool):
+            raise ValueError("use_nested_quant must be true or false.")
+        return use_nested_quant
+    @field_validator("bnb_4bit_quant_type")
+    def validate_bnb_4bit_quant_type(cls, bnb_4bit_quant_type):
+        if bnb_4bit_quant_type not in ["fp4", "int8"]:
+            raise ValueError("Invalid quantization type. Must be 'fp4' or 'int8'.")
+        return bnb_4bit_quant_type
+    @field_validator("fp16")
+    def validate_fp16(cls, fp16):
+        if not isinstance(fp16, bool):
+            raise ValueError("fp16 must be true or false.")
+        return fp16
+    @field_validator("bf16")
+    def validate_bf16(cls, bf16):
+        if not isinstance(bf16, bool):
+            raise ValueError("bf16 must be true or false.")
+        return bf16
+    @field_validator("per_device_train_batch_size")
+    def validate_per_device_train_batch_size(cls, per_device_train_batch_size, compute_specs):
+        if per_device_train_batch_size <= 0:
+            raise ValueError("Batch size must be greater than 0.")
+        elif per_device_train_batch_size > 3 and compute_specs != "high_end":
+            raise ValueError("Batch size must be less than 4. Your device cannot support a higher batch size.")
+        elif per_device_train_batch_size > 8 and compute_specs == "high_end":
+            raise ValueError("Batch size must be less than 9. Higher batch sizes cause out of memory error.")
+        return per_device_train_batch_size
+    @field_validator("per_device_eval_batch_size")
+    def validate_per_device_eval_batch_size(cls, per_device_eval_batch_size):
+        if per_device_eval_batch_size <= 0:
+            raise ValueError("Batch size must be greater than 0.")
+        return per_device_eval_batch_size
+    @field_validator("gradient_accumulation_steps")
+    def validate_gradient_accumulation_steps(cls, gradient_accumulation_steps):
+        if gradient_accumulation_steps <= 0:
+            raise ValueError("Gradient accumulation steps must be greater than 0.")
+        return gradient_accumulation_steps
+    @field_validator("gradient_checkpointing")
+    def validate_gradient_checkpointing(cls, gradient_checkpointing):
+        if not isinstance(gradient_checkpointing, bool):
+            raise ValueError("Gradient checkpointing must be true or false.")
+        return gradient_checkpointing
+    @field_validator("max_grad_norm")
+    def validate_max_grad_norm(cls, max_grad_norm):
+        if max_grad_norm <= 0:
+            raise ValueError("Max gradient norm must be greater than 0.")
+        return max_grad_norm
+    @field_validator("learning_rate")
+    def validate_learning_rate(cls, learning_rate):
+        if learning_rate <= 0:
+            raise ValueError("Learning rate must be greater than 0.")
+        elif learning_rate > 0.3:
+            raise ValueError("Learning rate must be less than 0.3. Higher learning rates cause exploding gradients.")
+        return learning_rate
+    @field_validator("weight_decay")
+    def validate_weight_decay(cls, weight_decay):
+        if weight_decay < 0:
+            raise ValueError("Weight decay must be greater than or equal to 0.")
+        return weight_decay
+    @field_validator("optim")
+    def validate_optim(cls, optim):
+        if optim not in ["paged_adamw_32bit", "paged_adamw_8bit", "adamw_torch", "adamw_hf"]:
+            raise ValueError("Invalid optimizer. Must be one of 'paged_adamw_32bit', 'paged_adamw_8bit', 'adamw_torch', or 'adamw_hf'.")
+        return optim
+    @field_validator("lr_scheduler_type")
+    def validate_lr_scheduler_type(cls, lr_scheduler_type):
+        if lr_scheduler_type not in ["linear", "cosine", "constant", "constant_with_warmup"]:
+            raise ValueError("Invalid learning rate scheduler type. Must be one of 'linear', 'cosine', 'constant', or 'constant_with_warmup'.")
+        return lr_scheduler_type
+    @field_validator("max_steps")
+    def validate_max_steps(cls, max_steps):
+        if max_steps < 0:
+            raise ValueError("Max steps must be greater than or equal to 0.")
+        elif max_steps > 100:
+            raise ValueError("Max steps must be less than 100.")
+        return max_steps
+    @field_validator("warmup_ratio")
+    def validate_warmup_ratio(cls, warmup_ratio):
+        if warmup_ratio < 0.0 or warmup_ratio > 1.0:
+            raise ValueError("Warmup ratio must be between 0.0 and 1.0.")
+        return warmup_ratio
+    @field_validator("group_by_length")
+    def validate_group_by_length(cls, group_by_length):
+        if not isinstance(group_by_length, bool):
+            raise ValueError("Group by length must be true or false.")
+        return group_by_length
+    @field_validator("packing")
+    def validate_packing(cls, packing):
+        if not isinstance(packing, bool):
+            raise ValueError("Packing must be true or false.")
+        return packing
+    @field_validator("max_seq_length")
+    def validate_max_seq_length(cls, max_seq_length):
+        if max_seq_length < -1:
+            raise ValueError("Max sequence length must be greater than 0 or it should be -1 if you want to use the default Max Sequence Length.")
+        return max_seq_length
+    @field_validator("dataset")
+    def validate_dataset(cls, dataset):
+        if not dataset:
+            raise ValueError("Dataset cannot be empty.")
+        return dataset
+
+
+
+@app.get("/")
+async def home(request: Request):
+    return JSONResponse({
+        "app_name": app_name,
+        "app_description": "No-code LLM finetuning for CUDA environments",
+        "features": [
+            "Intuitive no-code interface",
+            "PEFT and LoRA-based finetuning",
+            "4-bit/8-bit quantization",
+            "GPU-accelerated performance"
+        ]
+    })
+
+def gen_uuid(filename):
+    extension = filename.split(".")[-1]
+    return str(uuid.uuid4()).replace("-", "") + "." + extension
+
+@app.get("/finetune/detect")
+async def detect_hardware_page(request: Request):
     global settings_cache
     settings_cache.clear()  # Clear the cache to ensure fresh detection
-    return templates.TemplateResponse(
-        "detect_hardware.html",
-        {
-            "request": request,
-            "app_name": app_name,
-        }
-    )
+    return JSONResponse({
+        "app_name": app_name,
+        "message": "Ready to detect hardware"
+    })
 
 @app.post("/finetune/detect", response_class=JSONResponse)
 async def detect_hardware(request: Request):
     global settings_cache
     try:
-        form = await request.form()
-        # print(form["task"])
+        form = await request.json()
+        print(form)
         task = TaskFormData(task=form["task"])
         task = task.task
         settings_builder.task = task
@@ -92,11 +288,13 @@ async def detect_hardware(request: Request):
             }
         )
     except RuntimeError as e:
+        print(e)
         raise HTTPException(
             status_code=500,
             detail=str(e)
         )
-    except ValueError:
+    except ValueError as e:
+        print(e)
         raise HTTPException(
             status_code=400,
             detail="Invalid task. Must be one of 'text-generation', 'summarization', or 'question-answering'."
@@ -108,7 +306,7 @@ async def detect_hardware(request: Request):
             detail="Error detecting hardware. Please try again later."
         )
 
-@app.post("/finetune/set_model", response_class=JSONResponse)
+@app.post("/finetune/set_model")
 async def set_model(request: Request):
     global settings_cache
     try:
@@ -116,12 +314,6 @@ async def set_model(request: Request):
         selected_model = SelectedModelFormData(selected_model=form["selected_model"])
         settings_cache["selected_model"] = selected_model
         settings_builder.model_name = selected_model.selected_model
-        return JSONResponse(
-            {
-                "status_code": 200,
-                "selected_model": selected_model.selected_model,
-            }
-        )
     except Exception as e:
         print(e)
         raise HTTPException(
@@ -129,7 +321,7 @@ async def set_model(request: Request):
             detail="Error setting model. Please try again later."
         )
 
-@app.get("/finetune/load_settings", response_class=HTMLResponse)
+@app.get("/finetune/load_settings")
 async def load_settings_page(request: Request):
     global settings_cache
     if not settings_cache:
@@ -137,30 +329,19 @@ async def load_settings_page(request: Request):
             status_code=400,
             detail="No hardware detection data available. Please run hardware detection first."
         )
-    print(settings_builder.get_settings())
-    return templates.TemplateResponse(
-        "finetuning_settings.html",
-        {
-            "request": request,
-            "app_name": app_name,
-            "default_values": settings_builder.get_settings()
-        }
-    )
+    return JSONResponse({
+        "app_name": app_name,
+        "default_values": settings_builder.get_settings()
+    })
 
-@app.post("/finetune/load_settings", response_class=JSONResponse)
+@app.post("/finetune/load_settings")
 async def load_settings(request: Request):
     global settings_cache
     try:
         form = await request.json()
-        # The form is already a dictionary from request.json()
-        print(form)
-        settings = settings_builder.set_settings(form)
-        return JSONResponse(
-            {
-                "status_code": 200,
-                "settings": settings
-            }
-        )
+        form["dataset"] = datasets_dir + "/" + gen_uuid(form["dataset"])
+        validation = SettingsFormData(**form)
+        settings_builder.set_settings(validation.model_dump())
     except Exception as e:
         print(e)
         raise HTTPException(
@@ -168,3 +349,55 @@ async def load_settings(request: Request):
             detail="Error loading settings. Please try again later."
         )
 
+def finetuning_task(llm_tuner):
+    global settings_builder, finetuning_status
+    llm_tuner.load_dataset(settings_builder.dataset)
+    llm_tuner.llm_finetuner()
+    finetuning_status["status"] = "idle"
+    finetuning_status["message"] = ""
+    finetuning_status["progress"] = 0
+
+@app.get("/finetune/status")
+async def finetuning_status_page(request: Request):
+    global finetuning_status
+    return JSONResponse({
+        "status": finetuning_status["status"],
+        "progress": finetuning_status["progress"],
+        "message": finetuning_status["message"]
+    })
+
+@app.get("/finetune/start")
+async def start_finetuning_page(request: Request, background_task: BackgroundTasks):
+    global settings_builder, settings_cache, finetuning_status
+
+    if not settings_cache:
+        raise HTTPException(
+            status_code=400,
+            detail="No hardware detection data available. Please run hardware detection first."
+        )
+    if finetuning_status["status"] != "idle":
+        raise HTTPException(
+            status_code=400,
+            detail="A finetuning is already in progress. Please wait until it completes."
+        )
+    finetuning_status["status"] = "initializing"
+    finetuning_status["message"] = "Starting finetuning process..."
+    llm_tuner = LLMFinetuner(
+        task=settings_builder.task,
+        model_name=settings_builder.model_name,
+        compute_specs=settings_builder.compute_profile
+    )
+    llm_tuner.set_settings(**settings_builder.get_settings())
+
+    background_task.add_task(finetuning_task, llm_tuner)
+    finetuning_status["status"] = "running"
+    finetuning_status["message"] = "Finetuning process started."
+    return JSONResponse({
+        "app_name": app_name,
+        "message": "Finetuning process started.",
+    })
+
+
+
+if __name__ == '__main__':
+    uvicorn.run(app, host='127.0.0.1', port=8000)

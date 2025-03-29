@@ -1,0 +1,310 @@
+{
+  "context": "The Eiffel Tower is located in Paris, France. It was designed by Gustave Eiffel and completed in 1889.",
+  "question": "Who designed the Eiffel Tower?",
+  "answer": "Gustave Eiffel"
+}
+{
+  "context": "Water boils at 100 degrees Celsius at sea level. However, at higher altitudes, the boiling point decreases due to lower atmospheric pressure.",
+  "question": "Why does water boil at a lower temperature at higher altitudes?",
+  "answer": "Because of lower atmospheric pressure"
+}
+{
+  "context": "The Great Wall of China was built over several dynasties to protect against invasions. It stretches for over 13,000 miles.",
+  "question": "What was the purpose of the Great Wall of China?",
+  "answer": "To protect against invasions"
+}
+{
+  "context": "The capital of France is Paris. It is known for its iconic landmarks like the Eiffel Tower.",
+  "question": "What is the capital of France?",
+  "answer": "Paris"
+}
+{
+  "context": "The human body is made up of about 60% water. Water is essential for maintaining body temperature and transporting nutrients.",
+  "question": "What percentage of the human body is water?",
+  "answer": "About 60%"
+}
+{
+  "context": "Photosynthesis is the process by which plants convert sunlight into energy. This process involves the conversion of carbon dioxide and water into glucose and oxygen.",
+  "question": "What is the primary function of photosynthesis?",
+  "answer": "To convert sunlight into energy"
+}
+{
+  "context": "The largest planet in our solar system is Jupiter. It is a gas giant known for its massive size and stormy weather patterns.",
+  "question": "What is the largest planet in our solar system?",
+  "answer": "Jupiter"
+}
+{
+  "context": "The water cycle involves the continuous movement of water on, above, and below the surface of the Earth. This process includes evaporation, condensation, and precipitation.",
+  "question": "What are the main stages of the water cycle?",
+  "answer": "Evaporation, condensation, and precipitation"
+}
+{
+  "context": "The highest mountain in the world is Mount Everest, located in the Himalayas. It stands at approximately 8,848 meters above sea level.",
+  "question": "What is the highest mountain in the world?",
+  "answer": "Mount Everest"
+}
+{
+  "context": "The process of mitosis results in two daughter cells that are genetically identical to the parent cell. This process is crucial for growth and repair in multicellular organisms.",
+  "question": "What is the outcome of mitosis?",
+  "answer": "Two genetically identical daughter cells"
+}
+{
+  "context": "The largest mammal on Earth is the blue whale. It can grow up to 30 meters in length and weigh over 180 metric tons.",
+  "question": "What is the largest mammal on Earth?",
+  "answer": "The blue whale"
+}
+{
+  "context": "The Great Barrier Reef is the world's largest coral reef system, located off the coast of Australia. It is home to a diverse array of marine life.",
+  "question": "Where is the Great Barrier Reef located?",
+  "answer": "Off the coast of Australia"
+}
+{
+  "context": "The human brain contains billions of neurons, which are specialized cells that transmit information through electrical and chemical signals.",
+  "question": "What type of cells transmit information in the human brain?",
+  "answer": "Neurons"
+}
+{
+  "context": "The Amazon rainforest is the largest tropical rainforest in the world, covering over 5.5 million square kilometers. It is home to a vast array of plant and animal species.",
+  "question": "Where is the largest tropical rainforest located?",
+  "answer": "The Amazon"
+}
+{
+  "context": "The process of respiration involves the breakdown of glucose to produce energy. This process occurs in the mitochondria of cells.",
+  "question": "Where does cellular respiration occur?",
+  "answer": "In the mitochondria"
+}
+{
+  "context": "The largest living structure on Earth is the Great Barrier Reef. It is composed of more than 2,900 individual reefs and 900 islands.",
+  "question": "What is the largest living structure on Earth?",
+  "answer": "The Great Barrier Reef"
+}
+{
+  "context": "The capital of Australia is Canberra. It was chosen as the capital due to its central location between Sydney and Melbourne.",
+  "question": "Why was Canberra chosen as the capital of Australia?",
+  "answer": "Due to its central location"
+}
+{
+  "context": "The highest recorded temperature on Earth was 56.7 degrees Celsius, recorded in Death Valley, California.",
+  "question": "Where was the highest recorded temperature on Earth?",
+  "answer": "Death Valley, California"
+}
+{
+  "context": "The deepest part of the ocean is the Mariana Trench, located in the Pacific Ocean. It has a depth of approximately 11,000 meters.",
+  "question": "What is the deepest part of the ocean?",
+  "answer": "The Mariana Trench"
+}
+{
+  "context": "The largest desert in the world is the Antarctic Desert, covering an area of about 14 million square kilometers.",
+  "question": "What is the largest desert in the world?",
+  "answer": "The Antarctic Desert"
+}
+{
+  "context": "The process of meiosis results in four non-identical daughter cells, each with half the number of chromosomes as the parent cell.",
+  "question": "What is the outcome of meiosis?",
+  "answer": "Four non-identical daughter cells with half the chromosomes"
+}
+{
+  "context": "The largest river in the world by discharge volume is the Amazon River. It flows through Brazil and several other countries in South America.",
+  "question": "What is the largest river in the world by discharge volume?",
+  "answer": "The Amazon River"
+}
+{
+  "context": "The highest mountain peak in North America is Denali (formerly known as Mount McKinley), located in Alaska.",
+  "question": "What is the highest mountain peak in North America?",
+  "answer": "Denali"
+}
+{
+  "context": "The largest city in the world by population is Tokyo, Japan. It is a major economic and cultural center.",
+  "question": "What is the largest city in the world by population?",
+  "answer": "Tokyo, Japan"
+}
+{
+  "context": "The process of fermentation involves the conversion of sugars into alcohol or lactic acid. This process occurs in the absence of oxygen.",
+  "question": "What is the primary condition for fermentation?",
+  "answer": "The absence of oxygen"
+}
+{
+  "context": "The largest island in the world is Greenland. It is an autonomous territory within the Kingdom of Denmark.",
+  "question": "What is the largest island in the world?",
+  "answer": "Greenland"
+}
+{
+  "context": "The highest recorded wind speed on Earth was 372 kilometers per hour, recorded during a tropical cyclone.",
+  "question": "What was the highest recorded wind speed on Earth?",
+  "answer": "372 kilometers per hour"
+}
+{
+  "context": "The largest waterfall in the world by volume is the Inga Falls, located on the Congo River.",
+  "question": "What is the largest waterfall in the world by volume?",
+  "answer": "The Inga Falls"
+}
+{
+  "context": "The process of osmosis involves the movement of water molecules from a region of high concentration to a region of low concentration through a semipermeable membrane.",
+  "question": "What is the direction of water movement in osmosis?",
+  "answer": "From high to low concentration"
+}
+{
+  "context": "The largest lake in the world by surface area is the Caspian Sea, located between Europe and Asia.",
+  "question": "What is the largest lake in the world by surface area?",
+  "answer": "The Caspian Sea"
+}
+{
+  "context": "The highest mountain peak in South America is Aconcagua, located in Argentina.",
+  "question": "What is the highest mountain peak in South America?",
+  "answer": "Aconcagua"
+}
+{
+  "context": "The process of diffusion involves the random movement of particles from a region of high concentration to a region of low concentration.",
+  "question": "What is the direction of particle movement in diffusion?",
+  "answer": "From high to low concentration"
+}
+{
+  "context": "The largest city in South America by population is São Paulo, Brazil.",
+  "question": "What is the largest city in South America by population?",
+  "answer": "São Paulo, Brazil"
+}
+{
+  "context": "The highest recorded rainfall in a single day was 1825 mm, recorded in Réunion Island.",
+  "question": "Where was the highest recorded rainfall in a single day?",
+  "answer": "Réunion Island"
+}
+{
+  "context": "The largest volcano in the world is Mauna Loa, located in Hawaii. It is the largest active volcano on Earth.",
+  "question": "What is the largest active volcano in the world?",
+  "answer": "Mauna Loa"
+}
+{
+  "context": "The process of transpiration involves the loss of water vapor from plants through their leaves.",
+  "question": "What is the primary function of transpiration?",
+  "answer": "Loss of water vapor from plants"
+}
+{
+  "context": "The largest forest in the world is the Taiga, also known as the Boreal Forest. It covers much of Russia and Canada.",
+  "question": "What is the largest forest in the world?",
+  "answer": "The Taiga"
+}
+{
+  "context": "The highest mountain peak in Europe is Mount Elbrus, located in Russia.",
+  "question": "What is the highest mountain peak in Europe?",
+  "answer": "Mount Elbrus"
+}
+{
+  "context": "The process of evaporation involves the change of liquid water into water vapor.",
+  "question": "What is the primary change in evaporation?",
+  "answer": "Liquid water to water vapor"
+}
+{
+  "context": "The largest city in Europe by population is Istanbul, Turkey.",
+  "question": "What is the largest city in Europe by population?",
+  "answer": "Istanbul, Turkey"
+}
+{
+  "context": "The highest recorded temperature in Antarctica was 19.8 degrees Celsius.",
+  "question": "What was the highest recorded temperature in Antarctica?",
+  "answer": "19.8 degrees Celsius"
+}
+{
+  "context": "The largest glacier in the world is the Lambert-Fisher Glacier, located in Antarctica.",
+  "question": "What is the largest glacier in the world?",
+  "answer": "The Lambert-Fisher Glacier"
+}
+{
+  "context": "The process of condensation involves the change of water vapor into liquid water.",
+  "question": "What is the primary change in condensation?",
+  "answer": "Water vapor to liquid water"
+}
+{
+  "context": "The largest city in Africa by population is Lagos, Nigeria.",
+  "question": "What is the largest city in Africa by population?",
+  "answer": "Lagos, Nigeria"
+}
+{
+  "context": "The highest mountain peak in Africa is Mount Kilimanjaro, located in Tanzania.",
+  "question": "What is the highest mountain peak in Africa?",
+  "answer": "Mount Kilimanjaro"
+}
+{
+  "context": "The process of precipitation involves the falling of water droplets from the sky to the ground.",
+  "question": "What is the primary form of precipitation?",
+  "answer": "Falling water droplets"
+}
+{
+  "context": "The largest city in Asia by population is Tokyo, Japan.",
+  "question": "What is the largest city in Asia by population?",
+  "answer": "Tokyo, Japan"
+}
+{
+  "context": "The highest recorded snowfall in a single day was 75.8 inches, recorded in Silver Lake, Colorado.",
+  "question": "Where was the highest recorded snowfall in a single day?",
+  "answer": "Silver Lake, Colorado"
+}
+{
+  "context": "The largest island nation in the world is Indonesia, comprising over 17,000 islands.",
+  "question": "What is the largest island nation in the world?",
+  "answer": "Indonesia"
+}
+{
+  "context": "The process of sedimentation involves the settling of particles at the bottom of a liquid.",
+  "question": "What is the primary action in sedimentation?",
+  "answer": "Settling of particles"
+}
+{
+  "context": "The largest city in North America by population is Mexico City, Mexico.",
+  "question": "What is the largest city in North America by population?",
+  "answer": "Mexico City, Mexico"
+}
+{
+  "context": "The highest recorded tide was 16.3 meters, recorded in the Bay of Fundy.",
+  "question": "Where was the highest recorded tide?",
+  "answer": "The Bay of Fundy"
+}
+{
+  "context": "The largest waterfall in the world by height is Angel Falls, located in Venezuela.",
+  "question": "What is the largest waterfall in the world by height?",
+  "answer": "Angel Falls"
+}
+{
+  "context": "The process of filtration involves the removal of particles from a fluid by passing it through a porous material.",
+  "question": "What is the primary function of filtration?",
+  "answer": "Removal of particles from a fluid"
+}
+{
+  "context": "The largest city in South America by area is São Paulo, Brazil.",
+  "question": "What is the largest city in South America by area?",
+  "answer": "São Paulo, Brazil"
+}
+{
+  "context": "The highest recorded temperature in the Arctic was 23.3 degrees Celsius.",
+  "question": "What was the highest recorded temperature in the Arctic?",
+  "answer": "23.3 degrees Celsius"
+}
+{
+  "context": "The largest river in Europe by length is the Volga River, located in Russia.",
+  "question": "What is the largest river in Europe by length?",
+  "answer": "The Volga River"
+}
+{
+  "context": "The process of crystallization involves the formation of crystals from a solution.",
+  "question": "What is the primary outcome of crystallization?",
+  "answer": "Formation of crystals"
+}
+{
+  "context": "The largest city in Australia by population is Sydney.",
+  "question": "What is the largest city in Australia by population?",
+  "answer": "Sydney"
+}
+{
+  "context": "The highest recorded hailstone was 20 cm in diameter, recorded in Vivian, South Dakota.",
+  "question": "Where was the largest hailstone recorded?",
+  "answer": "Vivian, South Dakota"
+}
+{
+  "context": "The largest lake in South America by surface area is Lake Maracaibo, located in Venezuela.",
+  "question": "What is the largest lake in South America by surface area?",
+  "answer": "Lake Maracaibo"
+}
+{
+  "context": "The process of distillation involves the separation of components based on differences in boiling points.",
+  "question": "What is the primary principle of distillation?",
+  "answer": "Separation based on boiling points"
+}
