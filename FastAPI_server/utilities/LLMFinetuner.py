@@ -34,9 +34,9 @@ class LLMFinetuner:
         self.lora_dropout = None
         self.lora_alpha = None
         self.max_seq_length = None
-        self.logging_steps = None
+        self.logging_steps = 25
         self.bnb_4bit_compute_dtype = None
-        self.save_steps = None
+        self.save_steps = 0
         self.lora_r = None
         self.device_map = None
         self.num_train_epochs = None
@@ -80,8 +80,8 @@ class LLMFinetuner:
         Groups settings by category for better organization.
         """
         # Basic settings
-        self.fine_tuned_name = kwargs.get('fine_tuned_name')
-        self.output_dir = kwargs.get('output_dir')
+        self.fine_tuned_name = f"./finetuned_models/{self.model_name.replace('/', "-")}_{self.task}_{self.compute_specs}_finetuned"
+        self.output_dir = "./cache/" + kwargs.get('output_dir') if kwargs.get('output_dir') else "./cache"
         self.num_train_epochs = kwargs.get('num_train_epochs')
         self.max_seq_length = kwargs.get('max_seq_length')
 
@@ -105,8 +105,8 @@ class LLMFinetuner:
         self.per_device_train_batch_size = kwargs.get('per_device_train_batch_size')
         self.per_device_eval_batch_size = kwargs.get('per_device_eval_batch_size')
         self.gradient_accumulation_steps = kwargs.get('gradient_accumulation_steps')
-        self.save_steps = kwargs.get('save_steps')
-        self.logging_steps = kwargs.get('logging_steps')
+        self.save_steps = kwargs.get('save_steps') if kwargs.get('save_steps') else self.save_steps
+        self.logging_steps = kwargs.get('logging_steps') if kwargs.get('logging_steps') else self.logging_steps
 
         # Optimization settings
         self.gradient_checkpointing = kwargs.get('gradient_checkpointing')

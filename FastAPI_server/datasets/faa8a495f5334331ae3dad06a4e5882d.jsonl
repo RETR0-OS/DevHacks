@@ -1,0 +1,146 @@
+{"input": "What is the capital of France?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of France is Paris."}
+{"input": "Tell me a joke.", "instruction": "Share a short, clean joke.", "output": "Why don't scientists trust atoms? Because they make up everything!"}
+{"input": "What is the tallest mountain in the world?", "instruction": "Answer the question accurately and concisely.", "output": "The tallest mountain in the world is Mount Everest."}
+{"input": "Who wrote 'To Kill a Mockingbird'?", "instruction": "Answer the question accurately and concisely.", "output": "Harper Lee wrote 'To Kill a Mockingbird'."}
+{"input": "What is the speed of light?", "instruction": "Answer the question accurately and concisely.", "output": "The speed of light is approximately 299,792 kilometers per second."}
+{"input": "What is the capital of Japan?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Japan is Tokyo."}
+{"input": "What is the chemical symbol for water?", "instruction": "Answer the question accurately and concisely.", "output": "The chemical symbol for water is H2O."}
+{"input": "Who painted the Mona Lisa?", "instruction": "Answer the question accurately and concisely.", "output": "Leonardo da Vinci painted the Mona Lisa."}
+{"input": "What is the largest planet in our solar system?", "instruction": "Answer the question accurately and concisely.", "output": "The largest planet in our solar system is Jupiter."}
+{"input": "What is the main ingredient in guacamole?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in guacamole is avocado."}
+{"input": "What is the currency of the United Kingdom?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of the United Kingdom is the British Pound."}
+{"input": "Who discovered penicillin?", "instruction": "Answer the question accurately and concisely.", "output": "Alexander Fleming discovered penicillin."}
+{"input": "What is the capital of Canada?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Canada is Ottawa."}
+{"input": "What is the largest ocean on Earth?", "instruction": "Answer the question accurately and concisely.", "output": "The largest ocean on Earth is the Pacific Ocean."}
+{"input": "Who is known as the father of modern physics?", "instruction": "Answer the question accurately and concisely.", "output": "Albert Einstein is known as the father of modern physics."}
+{"input": "What is the smallest country in the world?", "instruction": "Answer the question accurately and concisely.", "output": "The smallest country in the world is Vatican City."}
+{"input": "What is the main language spoken in Brazil?", "instruction": "Answer the question accurately and concisely.", "output": "The main language spoken in Brazil is Portuguese."}
+{"input": "What is the chemical symbol for gold?", "instruction": "Answer the question accurately and concisely.", "output": "The chemical symbol for gold is Au."}
+{"input": "Who wrote 'Pride and Prejudice'?", "instruction": "Answer the question accurately and concisely.", "output": "Jane Austen wrote 'Pride and Prejudice'."}
+{"input": "What is the capital of Australia?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Australia is Canberra."}
+{"input": "What is the largest desert in the world?", "instruction": "Answer the question accurately and concisely.", "output": "The largest desert in the world is the Sahara Desert."}
+{"input": "Who developed the theory of relativity?", "instruction": "Answer the question accurately and concisely.", "output": "Albert Einstein developed the theory of relativity."}
+{"input": "What is the main ingredient in sushi?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in sushi is rice."}
+{"input": "What is the currency of Japan?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of Japan is the Japanese Yen."}
+{"input": "Who discovered gravity?", "instruction": "Answer the question accurately and concisely.", "output": "Sir Isaac Newton discovered gravity."}
+{"input": "What is the capital of Italy?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Italy is Rome."}
+{"input": "What is the longest river in the world?", "instruction": "Answer the question accurately and concisely.", "output": "The longest river in the world is the Nile River."}
+{"input": "Who is known as the father of computer science?", "instruction": "Answer the question accurately and concisely.", "output": "Alan Turing is known as the father of computer science."}
+{"input": "What is the smallest planet in our solar system?", "instruction": "Answer the question accurately and concisely.", "output": "The smallest planet in our solar system is Mercury."}
+{"input": "What is the main language spoken in China?", "instruction": "Answer the question accurately and concisely.", "output": "The main language spoken in China is Mandarin."}
+{"input": "What is the chemical symbol for oxygen?", "instruction": "Answer the question accurately and concisely.", "output": "The chemical symbol for oxygen is O."}
+{"input": "Who wrote '1984'?", "instruction": "Answer the question accurately and concisely.", "output": "George Orwell wrote '1984'."}
+{"input": "What is the capital of Germany?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Germany is Berlin."}
+{"input": "What is the largest continent on Earth?", "instruction": "Answer the question accurately and concisely.", "output": "The largest continent on Earth is Asia."}
+{"input": "Who is known as the father of modern chemistry?", "instruction": "Answer the question accurately and concisely.", "output": "Antoine Lavoisier is known as the father of modern chemistry."}
+{"input": "What is the main ingredient in hummus?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in hummus is chickpeas."}
+{"input": "What is the currency of the United States?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of the United States is the US Dollar."}
+{"input": "Who discovered electricity?", "instruction": "Answer the question accurately and concisely.", "output": "Benjamin Franklin is credited with discovering electricity."}
+{"input": "What is the capital of Russia?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Russia is Moscow."}
+{"input": "What is the highest waterfall in the world?", "instruction": "Answer the question accurately and concisely.", "output": "The highest waterfall in the world is Angel Falls."}
+{"input": "Who is known as the father of modern medicine?", "instruction": "Answer the question accurately and concisely.", "output": "Hippocrates is known as the father of modern medicine."}
+{"input": "What is the smallest ocean on Earth?", "instruction": "Answer the question accurately and concisely.", "output": "The smallest ocean on Earth is the Arctic Ocean."}
+{"input": "What is the main language spoken in India?", "instruction": "Answer the question accurately and concisely.", "output": "The main language spoken in India is Hindi."}
+{"input": "What is the chemical symbol for iron?", "instruction": "Answer the question accurately and concisely.", "output": "The chemical symbol for iron is Fe."}
+{"input": "Who wrote 'The Great Gatsby'?", "instruction": "Answer the question accurately and concisely.", "output": "F. Scott Fitzgerald wrote 'The Great Gatsby'."}
+{"input": "What is the capital of Spain?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Spain is Madrid."}
+{"input": "What is the largest island in the world?", "instruction": "Answer the question accurately and concisely.", "output": "The largest island in the world is Greenland."}
+{"input": "Who is known as the father of modern economics?", "instruction": "Answer the question accurately and concisely.", "output": "Adam Smith is known as the father of modern economics."}
+{"input": "What is the main ingredient in pizza dough?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in pizza dough is flour."}
+{"input": "What is the currency of China?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of China is the Chinese Yuan."}
+{"input": "Who discovered the structure of DNA?", "instruction": "Answer the question accurately and concisely.", "output": "James Watson and Francis Crick discovered the structure of DNA."}
+{"input": "What is the capital of France?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of France is Paris."}
+{"input": "What is the largest lake in the world?", "instruction": "Answer the question accurately and concisely.", "output": "The largest lake in the world is the Caspian Sea."}
+{"input": "Who is known as the father of modern biology?", "instruction": "Answer the question accurately and concisely.", "output": "Charles Darwin is known as the father of modern biology."}
+{"input": "What is the smallest continent on Earth?", "instruction": "Answer the question accurately and concisely.", "output": "The smallest continent on Earth is Australia."}
+{"input": "What is the main language spoken in Russia?", "instruction": "Answer the question accurately and concisely.", "output": "The main language spoken in Russia is Russian."}
+{"input": "What is the chemical symbol for sodium?", "instruction": "Answer the question accurately and concisely.", "output": "The chemical symbol for sodium is Na."}
+{"input": "Who wrote 'Moby-Dick'?", "instruction": "Answer the question accurately and concisely.", "output": "Herman Melville wrote 'Moby-Dick'."}
+{"input": "What is the capital of Brazil?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Brazil is Brasília."}
+{"input": "What is the largest river in the world by volume?", "instruction": "Answer the question accurately and concisely.", "output": "The largest river in the world by volume is the Amazon River."}
+{"input": "Who is known as the father of modern astronomy?", "instruction": "Answer the question accurately and concisely.", "output": "Nicolaus Copernicus is known as the father of modern astronomy."}
+{"input": "What is the main ingredient in bread?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in bread is flour."}
+{"input": "What is the currency of India?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of India is the Indian Rupee."}
+{"input": "Who discovered radioactivity?", "instruction": "Answer the question accurately and concisely.", "output": "Henri Becquerel discovered radioactivity."}
+{"input": "What is the capital of South Korea?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of South Korea is Seoul."}
+{"input": "What is the largest island in the Mediterranean Sea?", "instruction": "Answer the question accurately and concisely.", "output": "The largest island in the Mediterranean Sea is Sicily."}
+{"input": "Who is known as the father of modern geology?", "instruction": "Answer the question accurately and concisely.", "output": "James Hutton is known as the father of modern geology."}
+{"input": "What is the main ingredient in chocolate?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in chocolate is cocoa."}
+{"input": "What is the currency of Canada?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of Canada is the Canadian Dollar."}
+{"input": "Who discovered the electron?", "instruction": "Answer the question accurately and concisely.", "output": "J.J. Thomson discovered the electron."}
+{"input": "What is the capital of Mexico?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Mexico is Mexico City."}
+{"input": "What is the largest desert in North America?", "instruction": "Answer the question accurately and concisely.", "output": "The largest desert in North America is the Chihuahuan Desert."}
+{"input": "Who is known as the father of modern psychology?", "instruction": "Answer the question accurately and concisely.", "output": "Sigmund Freud is known as the father of modern psychology."}
+{"input": "What is the main ingredient in pasta?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in pasta is wheat."}
+{"input": "What is the currency of Australia?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of Australia is the Australian Dollar."}
+{"input": "Who discovered the law of universal gravitation?", "instruction": "Answer the question accurately and concisely.", "output": "Sir Isaac Newton discovered the law of universal gravitation."}
+{"input": "What is the capital of Egypt?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Egypt is Cairo."}
+{"input": "What is the largest lake in Africa?", "instruction": "Answer the question accurately and concisely.", "output": "The largest lake in Africa is Lake Victoria."}
+{"input": "Who is known as the father of modern philosophy?", "instruction": "Answer the question accurately and concisely.", "output": "René Descartes is known as the father of modern philosophy."}
+{"input": "What is the main ingredient in curry?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in curry is a blend of spices."}
+{"input": "What is the currency of Brazil?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of Brazil is the Brazilian Real."}
+{"input": "Who discovered the neutron?", "instruction": "Answer the question accurately and concisely.", "output": "James Chadwick discovered the neutron."}
+{"input": "What is the capital of Argentina?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Argentina is Buenos Aires."}
+{"input": "What is the largest desert in Asia?", "instruction": "Answer the question accurately and concisely.", "output": "The largest desert in Asia is the Gobi Desert."}
+{"input": "Who is known as the father of modern linguistics?", "instruction": "Answer the question accurately and concisely.", "output": "Noam Chomsky is known as the father of modern linguistics."}
+{"input": "What is the main ingredient in risotto?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in risotto is rice."}
+{"input": "What is the currency of Russia?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of Russia is the Russian Ruble."}
+{"input": "Who discovered the proton?", "instruction": "Answer the question accurately and concisely.", "output": "Ernest Rutherford discovered the proton."}
+{"input": "What is the capital of Turkey?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Turkey is Ankara."}
+{"input": "What is the largest lake in North America?", "instruction": "Answer the question accurately and concisely.", "output": "The largest lake in North America is Lake Superior."}
+{"input": "Who is known as the father of modern sociology?", "instruction": "Answer the question accurately and concisely.", "output": "Émile Durkheim is known as the father of modern sociology."}
+{"input": "What is the main ingredient in paella?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in paella is rice."}
+{"input": "What is the currency of South Africa?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of South Africa is the South African Rand."}
+{"input": "Who discovered the structure of the atom?", "instruction": "Answer the question accurately and concisely.", "output": "Niels Bohr discovered the structure of the atom."}
+{"input": "What is the capital of Saudi Arabia?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Saudi Arabia is Riyadh."}
+{"input": "What is the largest desert in Australia?", "instruction": "Answer the question accurately and concisely.", "output": "The largest desert in Australia is the Great Victoria Desert."}
+{"input": "Who is known as the father of modern genetics?", "instruction": "Answer the question accurately and concisely.", "output": "Gregor Mendel is known as the father of modern genetics."}
+{"input": "What is the main ingredient in falafel?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in falafel is chickpeas."}
+{"input": "What is the currency of Switzerland?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of Switzerland is the Swiss Franc."}
+{"input": "Who discovered the law of conservation of mass?", "instruction": "Answer the question accurately and concisely.", "output": "Antoine Lavoisier discovered the law of conservation of mass."}
+{"input": "What is the capital of Thailand?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Thailand is Bangkok."}
+{"input": "What is the largest lake in South America?", "instruction": "Answer the question accurately and concisely.", "output": "The largest lake in South America is Lake Titicaca."}
+{"input": "Who is known as the father of modern physics?", "instruction": "Answer the question accurately and concisely.", "output": "Albert Einstein is known as the father of modern physics."}
+{"input": "What is the main ingredient in miso soup?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in miso soup is miso paste."}
+{"input": "What is the currency of Sweden?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of Sweden is the Swedish Krona."}
+{"input": "Who discovered the law of electromagnetism?", "instruction": "Answer the question accurately and concisely.", "output": "James Clerk Maxwell discovered the law of electromagnetism."}
+{"input": "What is the capital of Norway?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Norway is Oslo."}
+{"input": "What is the largest desert in South America?", "instruction": "Answer the question accurately and concisely.", "output": "The largest desert in South America is the Atacama Desert."}
+{"input": "Who is known as the father of modern economics?", "instruction": "Answer the question accurately and concisely.", "output": "Adam Smith is known as the father of modern economics."}
+{"input": "What is the main ingredient in gazpacho?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in gazpacho is tomatoes."}
+{"input": "What is the currency of New Zealand?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of New Zealand is the New Zealand Dollar."}
+{"input": "Who discovered the law of planetary motion?", "instruction": "Answer the question accurately and concisely.", "output": "Johannes Kepler discovered the law of planetary motion."}
+{"input": "What is the capital of Greece?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Greece is Athens."}
+{"input": "What is the largest lake in Europe?", "instruction": "Answer the question accurately and concisely.", "output": "The largest lake in Europe is Lake Ladoga."}
+{"input": "Who is known as the father of modern chemistry?", "instruction": "Answer the question accurately and concisely.", "output": "Antoine Lavoisier is known as the father of modern chemistry."}
+{"input": "What is the main ingredient in pesto?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in pesto is basil."}
+{"input": "What is the currency of Norway?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of Norway is the Norwegian Krone."}
+{"input": "Who discovered the law of inertia?", "instruction": "Answer the question accurately and concisely.", "output": "Sir Isaac Newton discovered the law of inertia."}
+{"input": "What is the capital of Finland?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Finland is Helsinki."}
+{"input": "What is the largest desert in Europe?", "instruction": "Answer the question accurately and concisely.", "output": "The largest desert in Europe is the Ryn Desert."}
+{"input": "Who is known as the father of modern linguistics?", "instruction": "Answer the question accurately and concisely.", "output": "Noam Chomsky is known as the father of modern linguistics."}
+{"input": "What is the main ingredient in guacamole?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in guacamole is avocado."}
+{"input": "What is the currency of Denmark?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of Denmark is the Danish Krone."}
+{"input": "Who discovered the law of universal gravitation?", "instruction": "Answer the question accurately and concisely.", "output": "Sir Isaac Newton discovered the law of universal gravitation."}
+{"input": "What is the capital of Portugal?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Portugal is Lisbon."}
+{"input": "What is the largest lake in Asia?", "instruction": "Answer the question accurately and concisely.", "output": "The largest lake in Asia is the Caspian Sea."}
+{"input": "Who is known as the father of modern sociology?", "instruction": "Answer the question accurately and concisely.", "output": "Émile Durkheim is known as the father of modern sociology."}
+{"input": "What is the main ingredient in tabbouleh?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in tabbouleh is bulgur wheat."}
+{"input": "What is the currency of Finland?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of Finland is the Euro."}
+{"input": "Who discovered the law of conservation of energy?", "instruction": "Answer the question accurately and concisely.", "output": "Julius von Mayer discovered the law of conservation of energy."}
+{"input": "What is the capital of Hungary?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Hungary is Budapest."}
+{"input": "What is the largest desert in Africa?", "instruction": "Answer the question accurately and concisely.", "output": "The largest desert in Africa is the Sahara Desert."}
+{"input": "Who is known as the father of modern physics?", "instruction": "Answer the question accurately and concisely.", "output": "Albert Einstein is known as the father of modern physics."}
+{"input": "What is the main ingredient in kimchi?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in kimchi is fermented cabbage."}
+{"input": "What is the currency of Hungary?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of Hungary is the Hungarian Forint."}
+{"input": "Who discovered the law of thermodynamics?", "instruction": "Answer the question accurately and concisely.", "output": "Rudolf Clausius discovered the law of thermodynamics."}
+{"input": "What is the capital of Ireland?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Ireland is Dublin."}
+{"input": "What is the largest desert in North America?", "instruction": "Answer the question accurately and concisely.", "output": "The largest desert in North America is the Great Basin Desert."}
+{"input": "Who is known as the father of modern chemistry?", "instruction": "Answer the question accurately and concisely.", "output": "Antoine Lavoisier is known as the father of modern chemistry."}
+{"input": "What is the main ingredient in tzatziki?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in tzatziki is yogurt."}
+{"input": "What is the currency of Ireland?", "instruction": "Answer the question accurately and concisely.", "output": "The currency of Ireland is the Euro."}
+{"input": "Who discovered the law of motion?", "instruction": "Answer the question accurately and concisely.", "output": "Sir Isaac Newton discovered the law of motion."}
+{"input": "What is the capital of Belgium?", "instruction": "Answer the question accurately and concisely.", "output": "The capital of Belgium is Brussels."}
+{"input": "What is the largest desert in Antarctica?", "instruction": "Answer the question accurately and concisely.", "output": "The largest desert in Antarctica is the Antarctic Desert."}
+{"input": "Who is known as the father of modern economics?", "instruction": "Answer the question accurately and concisely.", "output": "Adam Smith is known as the father of modern economics."}
+{"input": "What is the main ingredient in hummus?", "instruction": "Answer the question accurately and concisely.", "output": "The main ingredient in hummus is chickpeas."}

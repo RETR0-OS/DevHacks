@@ -1,10 +1,12 @@
+import os
 import uvicorn
 import uuid
-from fastapi import FastAPI, Request, HTTPException, BackgroundTasks
+import json
+from fastapi import FastAPI, Request, HTTPException, BackgroundTasks, File, UploadFile, Form
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, field_validator
-
 from utilities.hardware_detector import HardwareDetector
 from utilities.settings_builder import SettingsBuilder
 from utilities.LLMFinetuner import LLMFinetuner
@@ -14,9 +16,21 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 hardware_detector = HardwareDetector()
 settings_builder = SettingsBuilder(None, None, None)
 settings_cache = {}
-finetuning_status = {"status": "idle", "progress": 0, "message": ""}
 app_name = "ModelForge"
+finetuning_status = {"status": "idle", "progress": 0, "message": ""}
 datasets_dir = "./datasets"
+
+origins = [
+    "http://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    allow_credentials=True,
+)
 
 class TaskFormData(BaseModel):
     task: str
@@ -67,7 +81,7 @@ class SettingsFormData(BaseModel):
     dataset: str
 
     @field_validator("dataset")
-    def validate_dataset(cls, dataset):
+    def validate_dataset_prescence(cls, dataset):
         if not dataset:
             raise ValueError("Dataset cannot be empty.")
         return dataset
@@ -335,19 +349,39 @@ async def load_settings_page(request: Request):
     })
 
 @app.post("/finetune/load_settings")
-async def load_settings(request: Request):
-    global settings_cache
-    try:
-        form = await request.json()
-        form["dataset"] = datasets_dir + "/" + gen_uuid(form["dataset"])
-        validation = SettingsFormData(**form)
-        settings_builder.set_settings(validation.model_dump())
-    except Exception as e:
-        print(e)
-        raise HTTPException(
-            status_code=500,
-            detail="Error loading settings. Please try again later."
-        )
+async def load_settings(json_file: UploadFile = File(...), settings: str = Form(...)):
+    global settings_builder, datasets_dir
+    # Validate file type
+    if json_file.content_type != "application/json" and json_file.content_type != "application/x-jsonlines" and not json_file.filename.endswith(('.json', '.jsonl')):
+        raise HTTPException(400, "Only JSON and JSONL files accepted")
+
+    json_filename = gen_uuid(json_file.filename)
+    file_content = await json_file.read()
+    file_path = os.path.join(datasets_dir, json_filename)
+
+    # Check file extension to decide processing method
+    if json_file.filename.endswith('.jsonl'):
+        # For JSONL files, validate each line is valid JSON
+        try:
+            # Decode bytes to string and split by lines
+            content_str = file_content.decode('utf-8')
+            for line in content_str.strip().split('\n'):
+                json.loads(line)  # Just to validate each line is valid JSON
+        except json.JSONDecodeError:
+            raise HTTPException(400, "Invalid JSONL format - contains invalid JSON lines")
+    elif json_file.filename.endswith('.json'):
+        # For JSON files, validate the entire content is valid JSON
+        try:
+            json.loads(file_content.decode('utf-8'))
+        except json.JSONDecodeError:
+            raise HTTPException(400, "Invalid JSON format")
+    with open(file_path, "wb") as f:
+        f.write(file_content)
+    settings_builder.dataset = file_path
+    settings_data = json.loads(settings)
+    settings_data["dataset"] = file_path
+    settings_builder.set_settings(settings_data)
+
 
 def finetuning_task(llm_tuner):
     global settings_builder, finetuning_status
@@ -376,6 +410,7 @@ async def start_finetuning_page(request: Request, background_task: BackgroundTas
             detail="No hardware detection data available. Please run hardware detection first."
         )
     if finetuning_status["status"] != "idle":
+        print(finetuning_status)
         raise HTTPException(
             status_code=400,
             detail="A finetuning is already in progress. Please wait until it completes."

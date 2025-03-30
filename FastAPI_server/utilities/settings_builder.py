@@ -102,6 +102,6 @@ class SettingsBuilder:
             "device_map": self.device_map,
             "max_seq_length": self.max_seq_length,
             "dataset": self.dataset,
-
+            "logging_steps": self.logging_steps,
 
         }
