@@ -442,27 +442,31 @@ async def load_settings(json_file: UploadFile = File(...), settings: str = Form(
 
 def finetuning_task(llm_tuner) -> None:
     global settings_builder, finetuning_status, model_path, settings_cache
+    db_con = sqlite3.connect("database/modelforge.db")
+    db_cur = db_con.cursor()
     try:
         model_id = str(uuid.uuid4()).replace("-", "_")
         model_name = settings_builder.model_name
         pipeline_task = settings_builder.task
         compute_specs = settings_builder.compute_profile
-        db_cursor.execute(
+        db_cur.execute(
             f'''
                 INSERT INTO modelforge_models (model_id, model_name, pipeline_task, compute_specs)
-                VALUES ({model_id}, '{model_name}', '{pipeline_task}', '{compute_specs}');
+                VALUES ('{model_id}', '{model_name}', '{pipeline_task}', '{compute_specs}');
             '''
         )
+        db_con.commit()
         llm_tuner.load_dataset(settings_builder.dataset)
         path = llm_tuner.finetune()
         model_path = os.path.join(os.path.dirname(__file__), path.replace("./", ""))
-        db_cursor.execute(
+        db_cur.execute(
             f'''
                 UPDATE modelforge_models
-                SET model_path = {model_path}
-                WHERE model_id = {model_id};
+                SET model_path = '{model_path}'
+                WHERE model_id = '{model_id}';
             '''
         )
+        db_con.commit()
     except hf_errors.HFValidationError as e:
         print(f"HFValidationError: {e}")
         finetuning_status["status"] = "error"
