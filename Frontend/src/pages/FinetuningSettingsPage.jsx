@@ -134,6 +134,7 @@ const FinetuneSettings = ({ defaultValues, updateSettings }) => {
     bnb_4bit_compute_dtype: "Technical setting for calculation precision",
     optim: "Method used to update the model during training",
     lr_scheduler_type: "How learning speed changes during training"
+    model_desc: "A description for your model for you to refer to it later"
   };
 
   // Tooltip display component
@@ -191,6 +192,14 @@ const FinetuneSettings = ({ defaultValues, updateSettings }) => {
               <div className="bg-gray-900 border border-gray-700 rounded-lg p-3 text-white">
                 {formState.model_name || defaultValues.model_name || 'Not set'}
               </div>
+            </div>
+            <div>
+                <Tooltip id="model_desc">
+                    <label className="block text-sm font-medium text-gray-400 mb-1">Model Description</label>
+                </Tooltip>
+                <div className="bg-gray-900 border border-gray-700 rounded-lg p-3 text-white">
+                    {formState.model_desc || defaultValues.model_desc || 'Set a description for your model'}
+                </div>
             </div>
             <div>
               <Tooltip id="gpu">

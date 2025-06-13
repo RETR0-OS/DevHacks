@@ -68,6 +68,7 @@ class Finetuner(ABC):
         self.dataset = None
         self.model_name = model_name
         self.logging_dir = "./training_logs"
+        self.model_desc = "A custom modelforge model"
 
 
     @staticmethod
@@ -149,6 +150,8 @@ class Finetuner(ABC):
         self.group_by_length = kwargs.get('group_by_length')
         self.packing = kwargs.get('packing')
         self.device_map = kwargs.get('device_map')
+
+        self.model_desc = kwargs.get('model_desc') if kwargs.get('model_desc') is not None else "A custom modelforge model"
 
     def invalid_access(self):
         print("*"*100)

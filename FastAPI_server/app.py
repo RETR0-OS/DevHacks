@@ -66,7 +66,8 @@ try:
         CREATE TABLE IF NOT EXISTS modelforge_models (
             model_id STRING PRIMARY KEY,
             model_name STRING NOT NULL,
-            model_path STRING, 
+            model_desc STRING,
+            model_path STRING,
             pipeline_task STRING NOT NULL,
             compute_specs STRING NOT NULL
         )
@@ -449,10 +450,11 @@ def finetuning_task(llm_tuner) -> None:
         model_name = settings_builder.model_name
         pipeline_task = settings_builder.task
         compute_specs = settings_builder.compute_profile
+        model_desc = settings_builder.model_desc
         db_cur.execute(
             f'''
-                INSERT INTO modelforge_models (model_id, model_name, pipeline_task, compute_specs)
-                VALUES ('{model_id}', '{model_name}', '{pipeline_task}', '{compute_specs}');
+                INSERT INTO modelforge_models (model_id, model_name, model_desc, pipeline_task, compute_specs)
+                VALUES ('{model_id}', '{model_name}', '{model_desc}', '{pipeline_task}', '{compute_specs}');
             '''
         )
         db_con.commit()

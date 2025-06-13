@@ -47,6 +47,7 @@ class SettingsBuilder:
         # SFT Advanced
         self.packing = False
         self.device_map = {"": 0}
+        self.model_desc = None
 
     def set_settings(self, settings_dict) -> None:
         """
